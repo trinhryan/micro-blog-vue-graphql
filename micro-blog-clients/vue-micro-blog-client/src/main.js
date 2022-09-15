@@ -6,6 +6,9 @@ import store from "./store";
 import ApolloClient from "apollo-boost";
 import VueApollo from "vue-apollo";
 
+// import css
+import "./assets/base.css";
+
 Vue.config.productionTip = false;
 // define const apolloClient to set graphql api url
 const apolloClient = new ApolloClient({

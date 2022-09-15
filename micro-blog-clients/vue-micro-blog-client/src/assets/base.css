@@ -1,0 +1,8 @@
+body {
+    font-family: 'Comicy',pacifico, "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #F8F8FF;
+    color: #A1C298;
+    margin: auto;
+}

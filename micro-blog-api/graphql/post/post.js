@@ -37,7 +37,7 @@ var queryType = new graphql.GraphQLObjectType({
     fields: {
         //first query to select all
         Posts: {
-            type: graphql.GraphQLList(PostType),
+            type: new graphql.GraphQLList(PostType),
             resolve: (root, args, context, info) => {
                 return new Promise((resolve, reject) => {
                     // raw SQLite query to select from table
@@ -152,7 +152,7 @@ var mutationType = new graphql.GraphQLObjectType({
       },
       //mutation for update
       deletePost: {
-         //type of object resturn after delete in SQLite
+         //type of object return after delete in SQLite
         type: graphql.GraphQLString,
         args:{
             id:{
