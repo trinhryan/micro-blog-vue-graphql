@@ -1,9 +1,9 @@
 <template>
   <div class="grid grip-flow-col gap-5 md:w-2/5 m-auto my-5">
     <div
-      v-for="post in Posts"
-      :key="post.id"
-      class="relative rounded-md bg-white p-5 mx-5 cursor-pointer hover:text-green-400 hover:-translate-x-2 hover:transition-all transition duration-300 ease-in-out"
+        v-for="post in Posts"
+        :key="post.id"
+        class="relative rounded-md bg-white p-5 mx-5 cursor-pointer hover:text-green-400 hover:-translate-x-2 hover:transition-all transition duration-300 ease-in-out"
     >
       <div class="font-bold" @click="editPost(post.id)">{{ post.title }}</div>
       <div class="overflow-hidden max-h-48" @click="editPost(post.id)">
@@ -20,8 +20,8 @@
         </div>
       </div>
       <div
-        class="absolute top-0 right-0 p-5 hover:text-red-500"
-        @click="deletePost(post.id)"
+          class="absolute top-0 right-0 p-5 hover:text-red-500"
+          @click="deletePost(post.id)"
       >
         <i class="ri-delete-bin-6-line"></i>
       </div>
@@ -57,12 +57,12 @@ export default {
 
   methods: {
     //method to format date
-    formatDate: function(date) {
+    formatDate: function (date) {
       return moment(date, "DD-MM-YYYY").format("MMM/DD/YYYY");
     },
     //method to edit post
     editPost(id) {
-      this.$router.push({ name: "editpost", params: { id: id } });
+      this.$router.push({name: "editpost", params: {id: id}});
     },
     //method to delete post
     async deletePost(id) {
@@ -75,21 +75,20 @@ export default {
         variables: {
           id: id.toString()
         },
-        update: cache => {
+        update: () => {
           // update post list
-          const data = cache.readQuery({ query: GET_POSTS });
-          this.Posts = data.Posts.filter(post => post.id !== id);
+          this.Posts = this.Posts.filter(post => post.id !== id);
         }
       });
     },
     async getPosts() {
       await this.$apollo
-        .query({
-          query: GET_POSTS
-        })
-        .then(result => {
-          this.Posts = result.data.Posts;
-        });
+          .query({
+            query: GET_POSTS
+          })
+          .then(result => {
+            this.Posts = result.data.Posts;
+          });
     }
   },
   mounted() {
